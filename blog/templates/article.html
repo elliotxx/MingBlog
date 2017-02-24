@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load myfilter %}
+{% load markdown_deux_tags %}
+{% block content %}
+    <div class="content left">
+        <div id="post"
+             class="single-post post type-post status-publish format-standard hentry category-uncategorized">
+
+            <div class="post-aside">
+                <p class="post-date">{{ article.date_publish | month_to_upper }}<br/>{{ article.date_publish | date:'d' }}
+                </p>
+                <p class="author">By <a href="{{ SITE_HOST }}" title="由{{ article.user }}发布"
+                                        rel="author">{{ article.user }}</a></p>
+
+            </div>
+
+            <div class="post-content">
+
+                <h1 class="entry-title">{{ article.title }}</h1>
+
+                <div class="post-meta">
+                    <p>
+                    <span class="date_publish">{{article.date_publish | date:'Y-m-d'}}</span>
+
+                    <span class="categories">Category: <a
+                          href="{{ SITE_HOST }}{% url 'category' article.category %}"
+                            rel="category tag">{{ article.category }}</a></span>
+
+                    <span class="tags">Tags:
+                        {% for tag in article.tag.all %}
+                            {% if forloop.counter != 1 %},{% endif %}
+                            <a href="{{ SITE_HOST }}{% url 'tag' tag.id %}" rel="tag">{{ tag.name }}</a>
+                        {% empty %}
+                            无标签
+                        {% endfor %}
+                    </span>
+                    <span class="comments"><a
+                            href="{{ SITE_HOST }}{% url 'article' article.id %}#comments"
+                            title="{{ article.comment_cnt }}">
+                            {% if article.comment_cnt == 0 %}
+                                Leave a Comment
+                            {% else %}
+                                {{ article.comment_cnt }} Comment
+                            {% endif %}
+                    </a></span>
+                    <span class="edit"><a
+                          href="{{ SITE_HOST }}/admin/blog/article/{{article.id }}"
+                            title="Edit {{ article.title}}">
+                             Edit
+                    </a></span>
+                    </p>
+                </div><!-- .post-meta -->
+                <div class="postBody">
+                    {% if article.isMarkdown %}
+                        {{ article.content | custom_markdown }}
+                    {% else %}
+                        {% autoescape off %}
+                        {{ article.content }}
+                        {% endautoescape %}
+                    {% endif %}
+                </div>
+
+            </div> <!-- post-content -->
+
+<!--
+			<div class="article-social">
+				<a href="javascript:;" data-action="ding" data-id="4048" id="Addlike" class="action actived"><i class="fa fa-heart-o"></i>喜欢 (<span class="count">8</span>)</a><span class="or">or</span><span class="action action-share bdsharebuttonbox"><i class="fa fa-share-alt"></i>分享 (<span class="bds_count" data-cmd="count" title="累计分享0次">0</span>)<div class="action-popover"><div class="popover top in"><div class="arrow"></div><div class="popover-content"><a href="#" class="sinaweibo fa fa-weibo" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="tencentweibo fa fa-tencent-weibo" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="qq fa fa-qq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_renren fa fa-renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_more fa fa-ellipsis-h" data-cmd="more"></a></div></div></div></span><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+			</div>
+-->
+
+       </div> <!-- post-item -->
+
+        
+        <div id="comments">
+            <div id="respond" class="comment-respond">
+{#                <h3 id="reply-title" class="comment-reply-title">发表评论</h3>#}
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="{{ article.id }}" data-title="{{ article.title }}"
+                     data-url="{{ SITE_HOST }}/article/{{ article.id }}"></div>
+                <!-- 多说评论框 end -->
+                <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                <script type="text/javascript">
+                    var duoshuoQuery = {short_name: "{{ SHORT_NAME }}"};
+                    (function () {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                        || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- 多说公共JS代码 end -->
+            </div>
+        </div><!-- #comments -->
+
+    </div><!-- .content -->
+{% endblock %}

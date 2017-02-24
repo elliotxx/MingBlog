@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+<div id="wowslider-container1" style="">
+    <div class="ws_images">
+        <ul>
+            {% for ad in ad_list %}
+                <li><a target="_blank" href="{{ ad.callback_url }}" title="{{ ad.title }}">
+                    <img id="image-{{ forloop.counter }}" src="{{ MEDIA_URL }}/{{ ad.image_url }}"
+                        title="{{ ad.title }}" alt="{{ ad.title }}"/>
+                </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="ws_thumbs">
+        <div>
+            {% for ad in ad_list %}
+            <a target="_blank" href="#" title="{{ ad.title }}">
+                <img id="thumb-{{ forloop.counter }}" src="{{ THUMB_URL }}/{{ ad.image_url }}"/>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="ws_shadow"></div>
+</div>
+<script type="text/javascript" src="{% static 'js/slider.js' %}"></script>

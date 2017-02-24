@@ -1,0 +1,26 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="zh-CN" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
+
+<head>
+    {% include 'head.html' %}
+</head>
+
+<body class="home blog designfolio" >
+    <div id="body-container">
+        {% include 'header.html' %}
+        <div id="container">
+            <div id="contentwrap" class="two-col-r">
+                {% block content %}{% endblock %}
+                {% include 'sidebar.html' %}
+{#                {% block sidebar %}{% endblock %}#}
+            </div><!-- #contentwrap -->
+        </div><!-- #container -->
+        {% include 'footer.html' %}
+    </div><!-- #body-container -->
+</body>
+
+</html>

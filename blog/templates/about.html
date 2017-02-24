@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+        <div class="content left">
+        <h3 id="about-title" class="widget-title">个人简介</h3>
+            <div id="about" align="center" class="widget" style="text-align:left;margin-top: -45px;" >
+                <img id="about-img" src="{% static 'images/about.jpg' %}" />
+                <p id="about-brief" class="widget-title;" style="word-break: break-all;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我是xxx，一名coder。<br/>
+    {#            <p id="brief" class="widget-title" style="font-size: 20px;margin:10px;margin-left: 630px;">2017.1.17</p>#}
+                <div class="catch-me" >
+                    <div >
+                    <a data-balloon="Email" data-balloon-pos="up" target="_blank" style="margin-left: 5px;margin-right: 5px;" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=yiyu2017@qq.com" class="external" rel="nofollow"><i class="fa fa-envelope-o" style="font-size: 20px;"></i></a>
+                    <a data-balloon="GitHub" data-balloon-pos="up" target="_blank" style="margin-left: 5px;margin-right: 5px;" href="https://github.com/windcode" class="external" rel="nofollow"><i class="fa fa-github" style="font-size: 22px;"></i></a>
+                    <a data-balloon="知乎" data-balloon-pos="up" target="_blank" style="margin-left: 5px;margin-right: 5px;" href="https://www.zhihu.com/people/yi-yu-67" class="external" rel="nofollow"><i  class="fa" style="font-size: 20px; font-weight: 500;">知</i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 评论框 -->
+            <div id="comments">
+                <div id="respond" class="comment-respond">
+                    <!-- 多说评论框 start -->
+                    <div class="ds-thread" data-thread-key="about" data-title="关于我"
+                         data-url="{% url 'about' %}"></div>
+                    <!-- 多说评论框 end -->
+                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                    <script type="text/javascript">
+                        var duoshuoQuery = {short_name: "{{ SHORT_NAME }}"};
+                        (function () {
+                            var ds = document.createElement('script');
+                            ds.type = 'text/javascript';
+                            ds.async = true;
+                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                            ds.charset = 'UTF-8';
+                            (document.getElementsByTagName('head')[0]
+                            || document.getElementsByTagName('body')[0]).appendChild(ds);
+                        })();
+                    </script>
+                    <!-- 多说公共JS代码 end -->
+                </div>
+            </div><!-- #comments -->
+
+    </div><!-- #content left -->
+{% endblock %}

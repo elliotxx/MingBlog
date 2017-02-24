@@ -1,0 +1,105 @@
+{% load myfilter %}
+{% load markdown_deux_tags %}
+{% for article in article_list %}
+    <div id="post-{{ article.id }}"
+         class="post-{{ article.id }} post">
+
+        <div class="post-aside">
+            <p class="post-date ">{{ article.date_publish | month_to_upper }}<br/>{{ article.date_publish | date:'d' }}</p>
+
+            <p class="author">By <a href="{{ SITE_HOST }}" title="由{{ article.user }}发布"
+                                    rel="author">{{ article.user }}</a></p>
+        </div>
+
+        <div class="post-content">
+
+            <h2 class="entry-title"><a
+                    href="{% url 'article' article.id %}"
+                    rel="bookmark">
+                    {% if article.is_recommend == 1 %}
+                        <span style='color:red'>[顶] </span>
+                    {% endif %}
+                    {{ article.title }}</a></h2>
+
+            <div class="post-meta">
+                <p>
+                    <span class="date_publish">{{article.date_publish | date:'Y-m-d'}}</span>
+
+                    <span class="categories">Category: <a
+                            href="{% url 'category' article.category %}"
+                            rel="category tag">{{ article.category }}</a></span>
+
+                    <span class="tags">Tags:
+                        {% for tag in article.tag.all %}
+                            {% if forloop.counter != 1 %},{% endif %}
+                            <a href="{% url 'tag' tag.id %}" rel="tag">{{ tag.name }}</a>
+                        {% empty %}
+                            无标签
+                        {% endfor %}
+                    </span>
+                    <span class="comments"><a
+                            href="{% url 'article' article.id %}#comments"
+                            title="{{ article.comment_cnt }}">
+                            {% if article.comment_cnt == 0 %}
+                                Leave a Comment
+                            {% else %}
+                                {{ article.comment_cnt }} Comment
+                            {% endif %}
+                    </a></span>
+                    <span class="edit"><a
+                          href="/admin/blog/article/{{article.id }}"
+                            title="Edit {{ article.title}}">
+                             Edit
+                    </a></span>
+
+
+                </p>
+            </div><!-- .post-meta -->
+
+            <div class="postBody">
+                <p>{{ article.desc | markdown}}</p>
+            </div>
+        </div><!-- .post-content -->
+
+    </div> <!-- .post -->
+    {% if forloop.last %}
+        <div class="pagination widget-title" style="font-size: 15px;text-align:center;">
+            <span class="step-links">
+                {% if article_list.has_previous %}
+                    {% if current_page == 'search' %}
+                        <a href="?s={{ key }}&page={{ article_list.previous_page_number }}">« previous</a>
+                    {% else %}
+                        <a href="?page={{ article_list.previous_page_number }}">« previous</a>
+                    {% endif %}
+                {% endif %}
+
+                &nbsp;
+                <span class="current" >
+                    Page {{ article_list.number }} of {{ article_list.paginator.num_pages }}
+                </span>
+                &nbsp;
+
+                {% if article_list.has_next %}
+                    {% if current_page == 'search' %}
+                        <a href="?s={{ key }}&page={{ article_list.next_page_number }}">next »</a>
+                    {% else %}
+                        <a href="?page={{ article_list.next_page_number }}">next »</a>
+                    {% endif %}
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+    {% empty %}
+    <!-- 文章列表为空时 -->
+    <div id="not-found" class="post">
+        <div class="post-aside">
+            <p id="not-found-text-1" class="post-date" >亲</p>
+        </div>
+        <div class="post-content"  >
+            <h2 id="not-found-text-2" class="title" >没有找到你想要的！</h2>
+        </div>
+    </div>
+{% endfor %}
+
+
+

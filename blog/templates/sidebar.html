@@ -1,0 +1,121 @@
+{% load staticfiles %}
+<div id="primary-sidebar" class="sidebar-container right" role="complementary">
+    <div id="description " align="center" class="widget" style="margin-top: -5px;" >
+        <p><img id="avatar" src="{% static 'images/avatar.png' %}" style="text-align: center;border-radius:50%;width:100px;" /></p>
+        <h2 class="title widget chaffle" style="padding-top: 0px;width: 150px;" data-lang="zh"  >xxx</h2>
+        <p id="brief" class="widget-title" style="font-size:15px;margin:0px;margin-top: -5px;">xxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+            xxxxxxxxxxxxxxxxxxxxxx<br/>
+            xxxxxxxxxxxxxxxxxxxxxx<br/>
+            xxxxxxxxxxxxxxxxxxxxxx<br/>
+        <div class="catch-me" >
+            <div style="margin-top: 5px;">
+            <a data-balloon="Email" data-balloon-pos="up" target="_blank" style="margin-left: 5px;margin-right: 5px;" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=yiyu2017@qq.com" class="external" rel="nofollow"><i class="fa fa-envelope-o" style="font-size: 20px;"></i></a>
+            <a data-balloon="GitHub" data-balloon-pos="up" target="_blank" style="margin-left: 5px;margin-right: 5px;" href="https://github.com/windcode" class="external" rel="nofollow"><i class="fa fa-github" style="font-size: 22px;"></i></a>
+            <a data-balloon="知乎" data-balloon-pos="up" target="_blank" style="margin-left: 5px;margin-right: 5px;" href="https://www.zhihu.com/people/yi-yu-67" class="external" rel="nofollow"><i  class="fa" style="font-size: 20px; font-weight: 500;">知</i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="global-widget-area" class="widget-area" >
+        <div id="search-2" class="widget widget_search" style="padding-bottom: 0px;">
+            <ul>
+                <form role="search" method="get" id="searchform" class="searchform"
+                      action="{% url 'search' %}">
+                    <div>
+                        <input type="text" style="background-image: url(/static/images/search.png);" value="" name="s" id="s"/>
+                        <input type="submit" id="searchsubmit" value="搜索"/>
+                    </div>
+                </form>
+            </ul>
+        </div>
+
+        {% if not current_page  %}
+            <div id="recent-comments-2" class="widget widget_recent_comments">
+                <h3 class="widget-title chaffle" data-lang="zh" >近期评论</h3>
+                <p></p>
+                <!-- 多说最新评论 start -->
+                <div class="ds-recent-comments" style="padding-top:60px;" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+                <!-- 多说最新评论 end -->
+                <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                <script type="text/javascript">
+                var duoshuoQuery = {short_name:"{{ SHORT_NAME }}"};
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';ds.async = true;
+                        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                         || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                    </script>
+                <!-- 多说公共JS代码 end -->
+            </div>
+        {% endif %}
+
+{#        <!-- 近期评论 -->#}
+{#        <div id="recent-comments-2" class="widget widget_recent_comments"><h3 class="widget-title">近期评论</h3>#}
+{#            <ul id="recentcomments">#}
+{#                {% for comment in comment_list %}#}
+{#                <li class="recentcomments">#}
+{#                    <span class="comment-author-link">{{ comment.user }}</span>发表在《<a#}
+{#                        href="{{ SITE_HOST }}/{{ comment.article }}">{{ comment.article }}</a>》#}
+{#                </li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+        <div id="tag_cloud-2" class="widget widget_tag_cloud">
+            <h3 class="widget-title chaffle" data-lang="zh">标签</h3>
+            <div class="tagcloud">
+                {% for tag in tag_list %}
+                <a href='{% url 'tag' tag.id %}' class='tag-link'
+                                     title='1个话题'>{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="recent-posts-2" class="widget widget_recent_entries">
+            <h3 class="widget-title chaffle" data-lang="zh">近期文章</h3>
+            <ul>
+                {% for article in sidebar_article_list %}
+                <li>
+                    <a href="{% url 'article' article.id %}">{{ article.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="categories-2" class="widget widget_categories">
+            <h3 class="widget-title chaffle" data-lang="zh">分类目录</h3>
+            <ul>
+                {% for category in category_list %}
+                    {% for sub in category.sub_category %}
+                            <li class="cat-item"><a
+                                    href="{% url 'category' sub.name %}">{{ sub.name }}</a>
+                            </li>
+                        {% empty %}
+                            <li class="cat-item"><a
+                                href="{% url 'category' category.name %}">{{ category.name }}</a>
+                            </li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="archives-2" class="widget widget_archive">
+            <h3 class="widget-title chaffle" data-lang="zh">文章归档</h3>
+            <ul>
+                {% for archive in archive_list %}
+                <li><a href='{% url "archive" archive.year archive.month %}'>{{ archive.date_publish }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+{#        <!-- 功能 -->#}
+{#        <div id="meta-2" class="widget widget_meta"><h3 class="widget-title">功能</h3>#}
+{#            <ul>#}
+{#                <li><a rel="nofollow" href="/admin">登录</a></li>#}
+{#                <li><a href="http://www.anwcl.com/wordpress/feed/">文章<abbr#}
+{#                        title="Really Simple Syndication">RSS</abbr></a></li>#}
+{#                <li><a href="http://www.anwcl.com/wordpress/comments/feed/">评论<abbr#}
+{#                        title="Really Simple Syndication">RSS</abbr></a></li>#}
+{#            </ul>#}
+{#        </div>#}
+    </div>
+</div><!-- .sidebar-container -->

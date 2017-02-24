@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="content left">
+        {% if current_page == 'index' %}
+            {% include 'slider.html' %}
+        {% endif %}
+        {% include 'content.html' %}
+    </div><!-- .content -->
+{% endblock %}

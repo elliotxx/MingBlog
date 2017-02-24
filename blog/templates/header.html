@@ -1,0 +1,128 @@
+<div id="header-container">
+    <header class="cf">
+
+        <div id="logo-wrap">
+            <h1 id="site-title"><span><a href="{{ SITE_HOST }}{% url 'index' %}" >
+                {{ SITE_NAME }}
+                </a></span></h1>
+            <div id="site-description" >{{ SITE_DESC }}</div>
+
+        </div><!-- #logo-wrap -->
+
+        <nav class="primary-menu cf"></nav>
+
+            <div id="nav-header" class="navbar">
+                <ul class="nav">
+                    <!-- 这里代码写得好烂，冗余太多，有时间改进一下 -->
+                    {% if current_page == 'index' %}
+                        <li class="current_page_item">
+                    {% else %}
+                        <li class="page_item">
+                    {% endif %}
+                        <a href="{{ SITE_HOST }}{% url 'index' %}" class="chaffle"  data-lang="zh">{{ INDEX_NAME }}</a>
+
+                    </li>
+                    {% for category in category_list %}
+                        {% if current_page == category.name %}
+                            <li class="current_page_item">
+                        {% else %}
+                            <li class="page_item">
+                        {% endif %}
+                        <a href="{{ SITE_HOST }}{% url 'category' category.name %}" class="chaffle" data-lang="zh">{{ category.name }}</a>
+                        <ul class="sub-menu">
+                          {% for sub in category.sub_category %}
+                            <li><a href="{{ SITE_HOST }}{% url 'category' sub.name %}"
+                                     data-lang="zh">{{ sub.name }} {{ sub.article_num }}</a></li>
+                            {% empty %}
+                          {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                    {% if current_page == 'about' %}
+                        <li class="current_page_item">
+                    {% else %}
+                        <li class="page_item">
+                    {% endif %}
+                        <a href="{{ SITE_HOST }}{% url 'about' %}" class="chaffle"  data-lang="zh">{{ ABOUT_NAME }}</a></li>
+                    {% if current_page == 'board' %}
+                        <li class="current_page_item">
+                    {% else %}
+                        <li class="page_item">
+                    {% endif %}
+                        <a href="{{ SITE_HOST }}{% url 'board' %}" class="chaffle"  data-lang="zh">{{ BOARD_NAME }}</a></li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </header>
+
+</div><!-- #header-container -->
+
+
+<!-- 移动端导航菜单 -->
+<div id="mheader">
+    <a href="{{ SITE_HOST }}{% url 'index' %}"><h2>呓语 | 杨英明的个人博客</h2></a>
+    <i id="open-nav2" class=" fa fa-2x fa-list-ul"></i>
+</div>
+<div id="nav2">
+  <div id="sousuo2" title="在搜索框中输入关键字后，按“回车”即可搜到结果。">
+    <form name="keyform" method="get" action="{{ SITE_HOST }}{% url 'search' %}">
+      <input name="s" type="search" placeholder="点我搜索我的博客文章   搜索君已上线 (•̀ᴗ•́)و"></form></div>
+
+      	<div class="menu">
+    	<ul>
+            <!-- 这里代码写得好烂，冗余太多，有时间改进一下 -->
+            {% if current_page == 'index' %}
+                <li class="current_page_item navbar-category">
+            {% else %}
+                <li class="page_item navbar-category">
+            {% endif %}
+                <a href="{{ SITE_HOST }}{% url 'index' %}" class="chaffle"  data-lang="zh">{{ INDEX_NAME }}</a>
+
+            </li>
+            {% for category in category_list %}
+                {% if current_page == category.name %}
+                    <li class="current_page_item navbar-category">
+                {% else %}
+                    <li class="page_item navbar-category">
+                {% endif %}
+                <a href="{{ SITE_HOST }}{% url 'category' category.name %}" class="chaffle" data-lang="zh">{{ category.name }}</a>
+                <ul class="sub-nav animated zoomInRight">
+                  {% for sub in category.sub_category %}
+                    <li><a href="{{ SITE_HOST }}{% url 'category' sub.name %}"
+                           data-lang="zh">{{ sub.name }} ({{ sub.article_num }})</a></li>
+                    {% empty %}
+                  {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+            {% if current_page == 'about' %}
+                <li class="current_page_item navbar-category">
+            {% else %}
+                <li class="page_item navbar-category">
+            {% endif %}
+                <a href="{{ SITE_HOST }}{% url 'about' %}" class="chaffle"  data-lang="zh">{{ ABOUT_NAME }}</a></li>
+            {% if current_page == 'board' %}
+                <li class="current_page_item navbar-category">
+            {% else %}
+                <li class="page_item navbar-category">
+            {% endif %}
+                <a href="{{ SITE_HOST }}{% url 'board' %}" class="chaffle"  data-lang="zh">{{ BOARD_NAME }}</a></li>
+
+		</ul></div>
+    </div>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#open-nav2").click(function(){
+      $("#nav2").toggleClass("open");
+    });
+    $("li.item").click(function(){
+      $("li.item").removeClass("current");
+      $(this).addClass("current");
+    });
+  });
+</script>

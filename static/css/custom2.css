@@ -1,0 +1,266 @@
+/*自定义css start*/
+
+.catch-me a {
+    text-align: center
+}
+
+.catch-me a {
+    display: inline-block;
+    margin-bottom: 7px;
+    text-decoration: none
+}
+
+.catch-me i {
+    display: inline-block;
+    font-size: 16px;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 42px;
+    color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .1);
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    font-style: normal
+}
+
+.catch-me i:hover {
+    background-color: #f76b1d;
+    color: #fff
+}
+
+/*自定义css end*/
+
+.css_guestbook_position {
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+
+.css_guestbook_font_color {
+    color: #000000;
+}
+
+.css_form_text {
+    font-weight: normal;
+}
+
+.css_form_namefield {
+    border: 1px solid #DEDEDE;
+    width: 150px;
+    color: #000000;
+}
+
+.css_form_emailfield {
+    border: 1px solid #DEDEDE;
+    width: 150px;
+    color: #000000;
+}
+
+.css_form_urlfield {
+    border: 1px solid #DEDEDE;
+    width: 150px;
+    color: #000000;
+}
+
+.css_form_additional_option {
+    border: 1px solid #DEDEDE;
+    width: 150px;
+    color: #000000;
+}
+
+.css_form_textfieldspace {
+    text-align: left;
+    padding: 5px 0px 0px 0px;
+    margin: 0px 0px;
+}
+
+.css_form_messagefield {
+    border: 1px solid #DEDEDE;
+    width: 80%;
+    height: 150px;
+    color: #000000;
+}
+
+.css_form_antispamtext {
+    text-align: center;
+}
+
+.css_form_antispamcontent {
+    border: 1px solid #DEDEDE;
+}
+
+.css_form_antispamcontent_position {
+    text-align: center;
+    padding: 5px 0px;
+    margin: 0px 0px;
+}
+
+.css_form_antispam_inputfield {
+    width: 60px;
+    border: 1px solid #DEDEDE;
+    color: #000000;
+}
+
+.css_form_submit {
+    color: #000000;
+}
+
+.css_form_submit_position {
+    text-align: center;
+    padding: 20px 0px 10px 0px;
+}
+
+.css_form_errormessage {
+    color: #bb0000;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.css_form_successmessage {
+    color: #00bb00;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.css_form_link {
+    font-size: 14px;
+    position: relative;
+    top: 0px;
+    left: 0;
+}
+
+.css_navigation_totalcount {
+    font-size: 14px;
+    left: 0px;
+    width: 95%;
+    text-align: center;
+    padding: 0px 0px 5px 10px;
+}
+
+.css_navigation_overview {
+    left: 0px;
+    width: 95%;
+    text-align: center;
+    padding: 0px 0px 15px 12px;
+}
+
+.css_navigation_select {
+    color: #bb1100;
+    text-decoration: none;
+}
+
+.css_navigation_notselect {
+    color: #000000;
+    text-decoration: none;
+}
+
+.css_navigation_char {
+    color: #000000;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.css_navigation_char_position {
+    left: 0px;
+    width: 95%;
+    padding: 0px 0px 0px 10px;
+    margin: 0px 0px 20px 0px;
+    text-align: center;
+}
+
+.css_post_header1 {
+    font-size: 14px;
+    height: 15px;
+}
+
+.css_post_header2 {
+    width: 20px;
+    height: 15px;
+}
+
+.css_post_header3 {
+    width: 20px;
+    height: 15px;
+}
+
+.css_post_header4 {
+    font-size: 14px;
+    height: 15px;
+}
+
+.css_post_email_image {
+    height: 15px;
+    width: 15px;
+    border: 0px;
+}
+
+.css_post_url_image {
+    height: 15px;
+    width: 15px;
+    border: 0px;
+}
+
+.css_post_separator {
+    border: 1px solid #EEEEEE;
+    height: 1px;
+    width: 35%;
+    text-align: left;
+    margin: 0px 0px 0px 0px;
+}
+
+.css_post_message {
+    font-size: 14px;
+    margin: 5px 0px 0px 0px;
+}
+
+.css_form_embedded {
+    width: 95%;
+    border: 1px solid #AAAAAA;
+    font-size: 15px;
+    text-align: left;
+    padding: 0px 10px;
+    margin: 0px 0px 0px 0px;
+    line-height: 1.4em;
+}
+
+.css_post_embedded {
+    width: 95%;
+    border: 1px solid #AAAAAA;
+    font-size: 15px;
+    text-align: left;
+    padding: 10px 10px;
+    margin: 0px 0px 0px 0px;
+    line-height: 1.4em;
+}
+
+a.css_navigation_char:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
+a.css_navigation_select:hover {
+    text-decoration: none;
+    color: #bb1100;
+}
+
+a.css_navigation_notselect:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
+img.css_post_url_image {
+    border: 0px;
+}
+
+img.css_post_email_image {
+    border: 0px;
+}
+.recentcomments a {
+	display: inline !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
