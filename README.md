@@ -1,5 +1,9 @@
+个人博客：[呓语 | 杨英明的个人博客](http://www.yangyingming.com)
+欢迎访问！
 ##部署项目
-###修改 MingBlog/setting.py
+
+修改 MingBlog/setting.py
+
 * 1、关闭DEBUG功能
 DEBUG=False
 * 2、ALLOWED_HOSTS = [] 改为 ALLOWED_HOSTS = ['*']
