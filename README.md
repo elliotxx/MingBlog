@@ -2,7 +2,7 @@
 
 欢迎访问！
 
-##特性
+## 特性
 
 * 采用markdownx编辑器，支持编辑页和预览页双排显示，支持图片拖曳上传 
 * 支持markdown和html两种编写博文的方式
@@ -12,15 +12,15 @@
 * 文章归档
 * 广告滚动条
 
-##部署项目
+## 部署项目
 
-###下载项目
+### 下载项目
 
 ```
 clone https://github.com/windcode/MingBlog.git
 ```
 
-###修改 MingBlog/setting.py
+### 修改 MingBlog/setting.py
 
 * 1、关闭DEBUG功能
 DEBUG=False
